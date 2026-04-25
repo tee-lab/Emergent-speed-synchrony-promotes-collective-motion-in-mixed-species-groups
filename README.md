@@ -1,4 +1,4 @@
-# Emergent-speed-synchrony-facilitates-heterospecific-schooling
+# Emergent-speed-synchrony-promotes-mixed-species-schooling
 
 This repository contains Jupyter Notebooks used for the analysis in:
 
