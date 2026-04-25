@@ -1,56 +1,73 @@
 # Emergent-speed-synchrony-facilitates-heterospecific-schooling
 
-This repository contains Jupyter Notebooks for analysis of the manuscript:
+This repository contains Jupyter Notebooks used for the analysis in:
 
-> Tiwari et al. *Emergent speed synchrony promotes collective motion in mixed-species schools*. 
+> Tiwari et al. *Emergent speed synchrony promotes collective motion in mixed-species schools*.
 
-| Notebook | Description |
-|---|---|
+---
+
+# Notebooks
+
+| Notebook                             | Description                                                                                                                                           |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `Mix species_Group properties.ipynb` | Computes and visualises group-level properties: individual speed, group polarization, and nearest-neighbour distance across treatments and replicates |
-| `Spatial sorting.ipynb` | Computes Strong sorting percent in real data and randomized null data |
+| `Spatial sorting analysis.ipynb`     | Computes strong sorting percent in empirical data and compares it to randomized null models                                                           |
 
 ---
 
-## Data
+# Data
 
-### Source
+## Source
 
-The `.npz` input files contain precomputed arrays derived from raw tracking data.
-The preprocessing code that generates these files is located in: [LINK TO OTHER REPO / NOTEBOOK — e.g. `https://github.com/[ORG]/[PREPROCESSING-REPO]`] 
+The datesets are available at **[ADD LINK TO PREPROCESSING REPOSITORY]**
 
----
+The datasets contain processed arrays derived from raw tracking data.
 
-### `pol-vel-nnd.npz` — Input for `Mix species_Group properties.ipynb`
+## `MS_RB+TB_pol-vel-nnd.npz`
 
-| Key | Shape | dtype | Description |
-|-----|-------|-------|-------------|
+*Input for `Mix species_Group properties.ipynb`*
 
-| `vel` | `(replicates, treatments, frames, individuals, 2)` | float | Per-individual 2D velocity vectors (x, y) in body lengths per second (BL/s) |
-| `pol` | `(replicates, treatments, frames, 2)` | float | Group polarization vector (x, y) per frame — norm gives scalar polarization ∈ [0, 1] |
-| `nnd` | `(replicates, treatments, frames, individuals)` | float | Nearest-neighbour distance per individual per frame, in body lengths (BL) |
-
-
-> To test with synthetic data {synthetic data once that could be run through the preprocessing code, that is mentioned above, which generates the files ahead}:
-> ```python
-> import numpy as np
-> np.savez('pol-vel-nnd.npz',
->     vel=np.random.randn(5, 5, [FRAMES], 16, 2),
->     pol=np.random.randn(5, 5, [FRAMES], 2),
->     nnd=np.abs(np.random.randn(5, 5, [FRAMES], 16, 16))
-> )
-> ```
+| Key   | Shape                                                           | Description                                                         |
+| ----- | --------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `vel` | `(replicates, treatments, frames, individuals, 2)`              | 2D velocity vectors (x, y) in body lengths per second (BL/s)        |
+| `pol` | `(replicates, treatments, frames, 2)`                           | Group polarization vector (norm gives scalar polarization ∈ [0, 1]) |
+| `nnd` | `(replicates, treatments, frames, individuals, individuals)`    | Nearest-neighbour distance per individual (in BL)                   |
 
 ---
 
-### `[FILENAME].npz` — Input for `Spatial sorting.ipynb`
+### Synthetic test data
 
-| Key | Shape | dtype | Description |
-|-----|---|---|---|
-|
+```python
+import numpy as np
+
+FRAMES = 1000
+
+np.savez('MS_RB+TB_pol-vel-nnd.npz',
+    vel=np.random.randn(5, 5, FRAMES, 16, 2),
+    pol=np.random.randn(5, 5, FRAMES, 2),
+    nnd=np.abs(np.random.randn(5, 5, FRAMES, 16))
+)
+```
 
 ---
 
-## How to Run
+## `RB12+TB4.csv`, `RB8+TB8.csv`, `RB4+TB12.csv`
+
+*Input for `Spatial sorting analysis.ipynb`*
+
+| Column              | Description                                             |
+| ------------------- | ------------------------------------------------------- |
+| `FRAME ID`          | Frame index                                             |
+| `FishID`            | Fish ID                                                 |
+| `Nearest Neighbour` | Nearest Neighbour ID                                    |
+| `x`                 | X coordinate                                            |
+| `y`                 | Y coordinate                                            |
+| `SPECIES.ID`        | Species identity (RB = rosy barbs and TB = tiger barbs) |
+
+
+---
+
+## ⚙️ How to Run
 
 ### Requirements
 
@@ -58,53 +75,71 @@ The preprocessing code that generates these files is located in: [LINK TO OTHER 
 pip install numpy pandas matplotlib seaborn scipy jupyter
 ```
 
-### Notebook 1 — Group Properties
+---
 
-1. Place `pol-vel-nnd.npz` in the same directory as the notebook.
-2. Launch:
+### Notebook 1 — Mix species - group Properties
+1. Place `Ma_RB+TB_pol-vel-nnd.npz` in the same directory.
+2. Run:
+
    ```bash
    jupyter notebook "Mix species_Group properties.ipynb"
    ```
-3. Run all cells sequentially.
+3. Execute all cells.
 
-### Notebook 2 — Spatial Sorting
+---
 
-1. Place `sorting percent.csv` in the same directory as the notebook.
-2. Launch:
+### Notebook 2 — Spatial Sorting analysis
+
+1. Place `RB12+TB4.csv`, `RB8+TB8.csv` and `RB4+TB12.csv` in the same directory.
+2. Run:
+
    ```bash
-   jupyter notebook "Spatial sorting.ipynb"
+   jupyter notebook "Spatial sorting analysis.ipynb"
    ```
-3. Run all cells sequentially.
+3. Execute all cells.
 
 ---
 
 ## Outputs
 
-### `Mix species_Group properties.ipynb`
+### Group properties notebook
 
-| Figure | Description | Saved as |
-|---|---|---|
-| Fig. 1 C | KDE of nearest-neighbour distance across treatments | `near_neighbour_distance_kdeplot.png` |
-| Fig. 1 D | KDE of group polarization across treatments | `group_polarization_kdeplot.png` |
-| Fig. 2 A-B | Individual speed distributions — single-species trials | `individual_speed_gs16_.png` |
-| Fig. 2 C-D | Individual speed distributions — mixed trials with null model | `individual_speed_gs16_null.png` |
-| SI Fig. S2 | First vs. second half speed distributions per replicate × treatment | `first_vs_second_half_hist.png` |
+| Figure    | Description                                            | File                                  |
+| --------- | ------------------------------------------------------ | ------------------------------------- |
+| Fig. 1    | KDE of nearest-neighbour distance                      | `near_neighbour_distance_kdeplot.png` |
+| Fig. 2    | KDE of polarization                                    | `group_polarization_kdeplot.png`      |
+| Fig. 3    | First vs second half comparison of speed distribution  | `first_vs_second_half_hist.png`       |
+| Fig. 4    | Individual speed distributions (single-species)        | `individual_speed_gs16_.png`          |
+| Fig. 5    | Individual speed distributions (mixed-species + null)  | `individual_speed_gs16_null.png`      |
+| Fig. 6    | Relationship between speed and polarization            | `fspeed_polarization.png`       |
 
+---
 
-Summary statistics (mean, median, mode, SD) for NND, polarization, and speed are printed to the notebook output; uncomment `fig.savefig(...)` lines to save figures to disk.
+### Spatial sorting notebook
 
-### `Spatial sorting.ipynb`
-
-| Figure | Description | Saved as |
-|---|---|---|
-| Fig. 3 B | [DESCRIPTION] | `sorting percent plot.png` |
+| Figure  | Description                             | File                       |
+| ------- | --------------------------------------- | -------------------------- |
+| Fig. 1  | Strong sorting percentage vs null model | `sorting_percent_plot.png` |
 
 ---
 
 ## Notes
 
-- All `.npz` data files must be placed in the **same directory** as the notebook that reads them.
+- All `.npz` / `.csv` data files must be placed in the **same directory** as the notebook that reads them.
 - Array shapes must match expected dimensions exactly (see Data section above).
 - The `vel` and `pol` arrays use index order `[replicate][treatment]`; make sure any new data follows this convention.
 - Stopping events (speed < 0.001 BL/s) are set to `NaN` before analysis.
-- A `treatment` is the same as group composition and is the ratio of rosy barbs (RB) to tiger barbs (TB) in a group of 16 in this work and `replicate`is an independent experimental trial; for each replicate there are the different treatments.
+- A `treatment` is the same as group composition and is the ratio of rosy barbs (RB) to tiger barbs (TB) in a group of 16 in this work and `replicate`is an independent experimental trial.
+
+---
+
+## Reproducibility
+
+- Null models are generated by randomly shuffling species identities within each frame.
+- Results may vary slightly depending on random seed; set a seed for reproducibility if required.
+
+---
+
+## Contact
+
+For questions or collaboration, please contact the author.
