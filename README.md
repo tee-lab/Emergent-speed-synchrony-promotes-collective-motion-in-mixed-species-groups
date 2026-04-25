@@ -1,8 +1,8 @@
 # Emergent-speed-synchrony-facilitates-heterospecific-schooling
 
-This repository contains Jupyter Notebooks for analysis published in:
+This repository contains Jupyter Notebooks for analysis of the manuscript:
 
-> Tiwari et al. *Emergent speed synchrony promotes collective motion in mixed-species schools*. [JOURNAL], [YEAR]. DOI: [DOI]
+> Tiwari et al. *Emergent speed synchrony promotes collective motion in mixed-species schools*. 
 
 | Notebook | Description |
 |---|---|
@@ -108,18 +108,3 @@ Summary statistics (mean, median, mode, SD) for NND, polarization, and speed are
 - The `vel` and `pol` arrays use index order `[replicate][treatment]`; make sure any new data follows this convention.
 - Stopping events (speed < 0.001 BL/s) are set to `NaN` before analysis.
 - A `treatment` is the same as group composition and is the ratio of rosy barbs (RB) to tiger barbs (TB) in a group of 16 in this work and `replicate`is an independent experimental trial; for each replicate there are the different treatments.
-
-## Citation
-
-If you use this code, please cite:
-
-```bibtex
-@article{tiwari[YEAR],
-  author  = {Tiwari, Jahanvi and [CO-AUTHORS]},
-  title   = {Emergent speed synchrony promotes collective motion in mixed-species schools},
-  journal = {[JOURNAL]},
-  year    = {[YEAR]},
-  doi     = {[DOI]}
-}
-```
-
