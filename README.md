@@ -98,6 +98,19 @@ pip install numpy pandas matplotlib seaborn scipy jupyter
 
 ---
 
+### Notebook 3 — Mixed species model simulations
+
+1. Place `spatialmodels.py` and `utilities.py` in the same directory.
+2. Run:
+
+   ```bash
+   jupyter notebook "Mixed species_model simulations.ipynb"
+   ```
+3. Execute all cells.
+4. Place simulations datset in the same directory to generate simulation plots.
+
+---
+
 ## Outputs
 
 ### Group properties notebook
@@ -118,6 +131,17 @@ pip install numpy pandas matplotlib seaborn scipy jupyter
 | Figure  | Description                             | File                       |
 | ------- | --------------------------------------- | -------------------------- |
 | Fig. 1  | Strong sorting percentage vs null model | `sorting_percent_plot.png` |
+
+---
+
+### Spatial sorting notebook
+
+| Figure  | Description                             | File                       |
+| ------- | --------------------------------------- | -------------------------- |
+| Fig. 1  | Strong sorting percentage vs null model | `sorting_percent_plot.png` |
+| Fig. 2  | Strong sorting percentage vs null model | `sorting_percent_plot.png` |
+| Fig. 3  | Strong sorting percentage vs null model | `sorting_percent_plot.png` |
+| Fig. 4  | Strong sorting percentage vs null model | `sorting_percent_plot.png` |
 
 ---
 
