@@ -8,11 +8,11 @@ This repository contains Jupyter Notebooks used for the analysis in:
 
 # Notebooks
 
-| Notebook                             | Description                                                                                                                                           |
-| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `Mix species_Group properties.ipynb` | Computes and visualises group-level properties: individual speed, group polarization, and nearest-neighbour distance across treatments and replicates |
-| `Spatial sorting analysis.ipynb`     | Computes strong sorting percent in empirical data and compares it to randomized null models                                                           |
-
+| Notebook                                | Description                                                                                                                                             |
+| --------------------------------------- | -----------------------------------------------------------------------------------------------------------------------------------------------------   |
+| `Mix species_Group properties.ipynb`    | Computes and visualises group-level properties: individual speed, group polarization, and nearest-neighbour distance across treatments and replicates |
+| `Spatial sorting analysis.ipynb`        | Computes strong sorting percent in empirical data and compares it to randomized null models                                                           |
+| `Mixed species_model simulations.ipynb` | Runs mixed species model simulations of many trials, with the same model parameter set but varying initial conditions.                                 |
 ---
 
 # Data
