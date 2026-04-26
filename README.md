@@ -134,14 +134,14 @@ pip install numpy pandas matplotlib seaborn scipy jupyter
 
 ---
 
-### Spatial sorting notebook
+### Mixed species model simulation notebook
 
 | Figure  | Description                             | File                       |
 | ------- | --------------------------------------- | -------------------------- |
-| Fig. 1  | Strong sorting percentage vs null model | `sorting_percent_plot.png` |
-| Fig. 2  | Strong sorting percentage vs null model | `sorting_percent_plot.png` |
-| Fig. 3  | Strong sorting percentage vs null model | `sorting_percent_plot.png` |
-| Fig. 4  | Strong sorting percentage vs null model | `sorting_percent_plot.png` |
+| Fig. 1  | Single species simulations for individual speed distribution | `individual_speed_model.png` |
+| Fig. 2  | Mixed species simulations for individual speed distribution  | `individual_speed_mixed species model.png` |
+| Fig. 3  | Model simulation strong sorting percentage | `sorting_model.png` |
+| Fig. 4  | Model simulation for group polarization | `polarization_model.png` |
 
 ---
 
