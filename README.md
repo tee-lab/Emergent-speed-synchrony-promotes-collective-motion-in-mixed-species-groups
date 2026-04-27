@@ -33,22 +33,6 @@ The datasets contain processed arrays derived from raw tracking data; available 
 
 ---
 
-### Synthetic test data
-
-```python
-import numpy as np
-
-FRAMES = 1000
-
-np.savez('MS_RB+TB_pol-vel-nnd.npz',
-    vel=np.random.randn(5, 5, FRAMES, 16, 2),
-    pol=np.random.randn(5, 5, FRAMES, 2),
-    nnd=np.abs(np.random.randn(5, 5, FRAMES, 16))
-)
-```
-
----
-
 ## `RB12+TB4.csv`, `RB8+TB8.csv`, `RB4+TB12.csv`
 
 *Input for `Spatial sorting analysis.ipynb`*
